@@ -1,6 +1,0 @@
-services:
-  backend:
-    container_name: population_backend
-    build: .
-    ports:
-      - 3001:3001

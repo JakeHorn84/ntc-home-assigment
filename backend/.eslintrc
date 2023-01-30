@@ -1,0 +1,93 @@
+{
+  "root": true,
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": "*/tsconfig.json",
+    "sourceType": "module",
+    "warnOnUnsupportedTypeScriptVersion": false
+  },
+  "plugins": [
+    "@typescript-eslint",
+    "import",
+    "prettier"
+  ],
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:prettier/recommended",
+    "plugin:import/errors",
+    "plugin:import/typescript"
+  ],
+  "rules": {
+    "curly": [
+      "error"
+    ],
+    // Disable builtin ESLint rules that have a bad signal-to-noise ratio
+    "no-prototype-builtins": 0,
+    "no-inner-declarations": 0,
+    "require-atomic-updates": 1,
+    "camelcase": 0,
+    // Enable no-fallthrough to prevent multiple switch-case returns
+    "no-fallthrough": 2,
+    // Re-configure import plugin
+    // Order imports alphabetically
+    "import/order": [
+      "warn",
+      {
+        "alphabetize": {
+          "order": "asc"
+        }
+      }
+    ],
+    "sort-imports":["warn", {
+      "ignoreCase": false,
+      "ignoreDeclarationSort": true,
+      "ignoreMemberSort": false,
+      "memberSyntaxSortOrder": ["none", "all", "multiple", "single"],
+      "allowSeparatedGroups": true
+    }],
+    // Report any invalid exports, i.e. re-export of the same name
+    "import/export": 0,
+    // Ensure a default export is present, given a default import
+    "import/default": 1,
+    // Ensure named imports correspond to a named export in the remote file
+    "import/named": 0,
+    // Report repeated import of the same module in multiple places
+    "import/no-duplicates": 0,
+    // Ensure imports point to a file/module that can be resolved
+    "import/no-unresolved": 1,
+    // Ensure all imports appear before other statements
+    "import/first": 1,
+    // Reconfigure some @typescript-eslint configurations
+    "@typescript-eslint/no-namespace": 0,
+    "@typescript-eslint/explicit-function-return-type": 0,
+    "@typescript-eslint/no-inferrable-types": 1,
+    "@typescript-eslint/no-use-before-define": 0,
+    "@typescript-eslint/interface-name-prefix": 0,
+    "@typescript-eslint/explicit-module-boundary-types": 0,
+    "no-unused-vars": 0,
+    "@typescript-eslint/no-unused-vars": [
+      "warn",
+      {
+        "varsIgnorePattern": "^_",
+        "argsIgnorePattern": "^_",
+        "args": "after-used",
+        "ignoreRestSiblings": true
+      }
+    ],
+    // We use non-null assertions heavily so disable for now
+    "@typescript-eslint/no-non-null-assertion": 0,
+    // Allow require imports but show warning
+    "@typescript-eslint/no-var-requires": 1,
+    // Let @ts-ignore stanzas be warnings to remind of their existence
+    "@typescript-eslint/ban-ts-comment": 1,
+    // TODO: Set to warning
+    "@typescript-eslint/no-explicit-any": 0,
+    "@typescript-eslint/no-empty-interface": 0,
+    // Conflicts with prettier
+    "@typescript-eslint/member-delimiter-style": 0,
+    "@typescript-eslint/no-extra-semi": 1,
+    "no-extra-semi": 1
+  }
+}

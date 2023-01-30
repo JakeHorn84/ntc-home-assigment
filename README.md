@@ -2,27 +2,22 @@
 
 Imagine a client has asked you to build a small tool for browsing their EU population data. There is data for countries and some of the cities in those countries. You have two options for the approach:
 
-A) Backend
+## Running application
 
-- Use the sample PostgreSQL [database](./database). There is a README file with usage info.
-  - Alternatively, you can set up your own database with the csv data ([`countries.csv`](./database/countries.csv) and [`cities.csv`](./database/cities.csv)). If you do, make sure that your submission includes instructions on how to run the database with this data.
-- Create a backend that serves the country and city data from the database to users via an API. There should be at least an endpoint that answers:
-  - Which countries have one or more cities that have a population greater than a given value? Which cities are they?
-    - For example with 3 000 000 the answer is Spain (Madrid, 3305408) and Germany (Berlin, 3677472).
-- Include a test case for the main functionality.
-- Provide a [Docker](https://www.docker.com/) container setup for you server so we can easily run it regardless of your tech choices.
+- Application is running in docker containers. To get appliations to started it is needed to build first using command `docker-compose build`. After that application can be run using `docker-compose up -d`.
+- Application backend can be test with `curl`
+  - `curl GET http://localhost:3000/home-assignment/health` returns status of backend
+  - `curl GET http://localhost:3000/home-assignment/countryInfo\?country\=Spain` return country info
+  - `curl GET http://localhost:3000/home-assignment/citiesByPopulation\?population\=3000000` returns cities with population over or equal with population query parameter
+  - `curl GET http://localhost:3000/home-assignment/countries` returns list of countries
+- Containers can be kill with `docker-compose down`
 
-B) Frontend
+## Backend
 
-- Use the sample [backend](./backend). There is a README file with usage info.
-- Create an interactive frontend to display and browse the country and city data provided by the backend's endpoints.
-  - Some data should be fetched only after the user interacts with an element.
-  - The user should be able to filter countries by population size.
-- Include a test case that checks that the main elements are visible on the page.
-
-The assignment will give us material to discuss during your technical interview. We will consider your approach to problem solving, coding style, and knowledge. We are looking for **clear, consistent and clean** code.
-
-As long as your solution fulfils the requirements, you can choose the languages, frameworks, etc. Choose technologies that you know well: we really want to see your core strengths demonstrated.
+- Backend is using sample PostgreSQL.
+- To start developing backend database is needed to start first. It can be done with `docker-compose up database -d`
+- In `backend` folder use `yarn` to install needed packages. After that you can start application in developing mode with `yarn start-dev`
+- Test can be run with `yarn test` command. Notice that database is needed to be up and running to run tests.
 
 ## How to submit
 

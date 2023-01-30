@@ -1,0 +1,40 @@
+services:
+  database:
+    container_name: population_db
+    image: "postgres:latest"
+    environment:
+      POSTGRES_DB: population
+      POSTGRES_PASSWORD: possu
+    volumes:
+      - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - 5432:5432
+    networks:
+      - ntc-network   
+  backend:
+    container_name: backend
+    build:
+      context: "./backend"
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    command: yarn start
+    environment:
+      DB_PASSWORD: possu
+      DB_USER: postgres
+      DB_NAME: population
+      DB_HOST: database
+      PORT: 5432  
+    depends_on:
+      - database
+    links:
+      - database
+    expose:
+      - "3000"
+    ports:
+      - "127.0.0.1:3000:3000"
+    networks:
+      - ntc-network  
+    tty: true    
+networks:
+  ntc-network:
+    driver: bridge
