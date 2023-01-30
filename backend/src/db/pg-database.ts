@@ -6,7 +6,7 @@ let DB: Client
 
 export async function initDb(): Promise<void> {
   try {
-    const config = await createConfig()
+    const config = createConfig()
     DB = new Client(config)
     await DB.connect()
   } catch (err) {
