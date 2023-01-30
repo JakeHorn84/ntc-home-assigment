@@ -18,7 +18,3 @@ Imagine a client has asked you to build a small tool for browsing their EU popul
 - To start developing backend database is needed to start first. It can be done with `docker-compose up database -d`
 - In `backend` folder use `yarn` to install needed packages. After that you can start application in developing mode with `yarn start-dev`
 - Test can be run with `yarn test` command. Notice that database is needed to be up and running to run tests.
-
-## How to submit
-
-Please return the assignment with instructions on how to run it either as a Git repository or a zip file. To help us do a fair review, include a short description (for example in the README file) of what you focused on the most in the implementation and if there are any known issues.
