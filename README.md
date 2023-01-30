@@ -6,10 +6,10 @@ Imagine a client has asked you to build a small tool for browsing their EU popul
 
 - Application is running in docker containers. To get appliations to started it is needed to build first using command `docker-compose build`. After that application can be run using `docker-compose up -d`.
 - Application backend can be test with `curl`
-  - `curl GET http://localhost:3000/home-assignment/health` returns status of backend
-  - `curl GET http://localhost:3000/home-assignment/countryInfo\?country\=Spain` return country info
-  - `curl GET http://localhost:3000/home-assignment/citiesByPopulation\?population\=3000000` returns cities with population over or equal with population query parameter
-  - `curl GET http://localhost:3000/home-assignment/countries` returns list of countries
+  - `curl http://localhost:3000/home-assignment/health` returns status of backend
+  - `curl http://localhost:3000/home-assignment/countryInfo\?country\=Spain` return country info
+  - `curl http://localhost:3000/home-assignment/citiesByPopulation\?population\=3000000` returns cities with population over or equal with population query parameter
+  - `curl http://localhost:3000/home-assignment/countries` returns list of countries
 - Containers can be kill with `docker-compose down`
 
 ## Backend
